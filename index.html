@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>PAULO SENSI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Topbar -->
+  <header id="topbar" class="topbar hidden">
+    <button id="btnBack" class="icon-btn" aria-label="Voltar">←</button>
+
+    <div class="brand" id="brandTapArea">
+      <div class="brand-logo">
+        <img id="logoImg" src="assets/logo.png" alt="PAULO SENSI" onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block';">
+        <div id="logoFallback" class="logo-fallback" style="display:none;">PS</div>
+      </div>
+      <div class="brand-text">
+        <div class="brand-title">PAULO SENSI</div>
+        <div id="brandSub" class="brand-sub">Sensi Free Fire • GRÁTIS</div>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <span id="vipChip" class="vip-chip">GRÁTIS</span>
+      <button id="btnPlans" class="pill">Planos</button>
+    </div>
+  </header>
+
+  <main class="app">
+
+    <!-- Toast -->
+    <div id="toast" class="toast hidden">Copiado ✅</div>
+
+    <!-- SPLASH -->
+    <section id="viewSplash" class="view">
+      <div class="splash">
+        <div class="splash-card" id="splashLogoTap">
+          <img class="splash-logo" src="assets/logo.png" alt="PAULO SENSI"
+               onerror="this.style.display='none'; document.getElementById('splashFallback').style.display='flex';">
+          <div id="splashFallback" class="splash-fallback" style="display:none;">
+            <div class="splash-fallback-text">PAULO<br/>SENSI</div>
+          </div>
+        </div>
+        <button id="btnStart" class="btn btn-primary btn-big">COMEÇAR</button>
+        <div class="muted small">Toque 5x na logo para login do dono</div>
+      </div>
+    </section>
+
+    <!-- BRANDS -->
+    <section id="viewBrands" class="view hidden">
+      <div class="screen-head">
+        <h1>Escolha sua marca</h1>
+        <p class="muted">Pesquise por marca ou modelo.</p>
+
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="Buscar marca ou modelo..." autocomplete="off" />
+          <button id="btnClearSearch" class="icon-btn" aria-label="Limpar">✕</button>
+        </div>
+
+        <div id="quickRow" class="quick-row"></div>
+      </div>
+
+      <div id="brandsGrid" class="grid"></div>
+    </section>
+
+    <!-- MODELS -->
+    <section id="viewModels" class="view hidden">
+      <div class="screen-head">
+        <h1 id="modelsTitle">Modelos</h1>
+        <p id="modelsSub" class="muted">Escolha seu modelo.</p>
+
+        <div class="row">
+          <button id="btnTopDay" class="btn btn-ghost">🔥 Top do Dia</button>
+          <button id="btnFavOnly" class="btn btn-ghost">⭐ Favoritos</button>
+          <button id="btnSort" class="btn btn-ghost">⇅ Ordenar</button>
+        </div>
+      </div>
+
+      <div id="modelsGrid" class="grid"></div>
+      <div class="muted small tip">Dica: segure no card para favoritar ⭐</div>
+    </section>
+
+    <!-- SENSI -->
+    <section id="viewSensi" class="view hidden">
+      <div class="screen-head">
+        <div class="kicker" id="sensiBrandKicker">Marca</div>
+        <h1 id="sensiModelTitle">Modelo</h1>
+        <p id="sensiMeta" class="muted">Sensi travada para cliente • Copie e use</p>
+
+        <div class="vip-tabs">
+          <button class="vip-tab" data-tier="free">VIP 1</button>
+          <button class="vip-tab" data-tier="standard">VIP 2</button>
+          <button class="vip-tab" data-tier="premium">VIP 3</button>
+        </div>
+
+        <div class="row">
+          <button id="btnFavModel" class="btn btn-ghost star">☆</button>
+          <button id="btnCopyAll" class="btn btn-primary">COPIAR TUDO</button>
+          <button id="btnShare" class="btn btn-ghost">Compartilhar</button>
+        </div>
+      </div>
+
+      <div id="sensiPanel" class="panel"></div>
+
+      <div class="muted small tip">
+        Toque em qualquer linha para copiar só aquele valor.
+      </div>
+    </section>
+
+    <!-- PLANS -->
+    <section id="viewPlans" class="view hidden">
+      <div class="screen-head">
+        <h1>Planos VIP</h1>
+        <p class="muted">Pague via PIX e envie comprovante no WhatsApp.</p>
+      </div>
+
+      <div class="grid plans-grid">
+        <div class="plan-card">
+          <div class="plan-title">Grátis</div>
+          <div class="plan-price">R$ 0,00</div>
+          <ul class="plan-list">
+            <li>VIP 1 (básico)</li>
+            <li>Copiar valores</li>
+            <li>Favoritos & Recentes</li>
+          </ul>
+          <button id="btnUseFree" class="btn btn-ghost">USAR GRÁTIS</button>
+        </div>
+
+        <div class="plan-card hot">
+          <div class="badge">MAIS VENDIDO</div>
+          <div class="plan-title">Padrão</div>
+          <div class="plan-price">R$ 9,99</div>
+          <ul class="plan-list">
+            <li>VIP 1 + VIP 2</li>
+            <li>Sensis melhores</li>
+            <li>Acesso avançado</li>
+          </ul>
+          <button id="btnPayStandard" class="btn btn-primary">PAGAR PIX</button>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-title">Premium</div>
+          <div class="plan-price">R$ 19,50</div>
+          <ul class="plan-list">
+            <li>VIP 1 + VIP 2 + VIP 3</li>
+            <li>Top sensis completas</li>
+            <li>Conteúdo máximo</li>
+          </ul>
+          <button id="btnPayPremium" class="btn btn-primary">PAGAR PIX</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Já tem código VIP?</div>
+        <div class="muted">Digite abaixo para liberar no seu celular.</div>
+        <div class="row">
+          <input id="unlockCodeInput" class="input" placeholder="Ex: PS-AB12-CD34 ou seu e-mail" />
+          <button id="btnApplyCode" class="btn btn-primary">LIBERAR</button>
+        </div>
+        <div id="unlockMsg" class="muted small"></div>
+      </div>
+
+      <!-- PIX modal -->
+      <div id="pixBox" class="modal hidden">
+        <div class="modal-card">
+          <div class="modal-head">
+            <div id="pixTitle" class="modal-title">PIX</div>
+            <button id="btnClosePix" class="icon-btn" aria-label="Fechar">✕</button>
+          </div>
+          <div class="muted small">PIX Copia e Cola:</div>
+          <pre id="pixCode" class="pix-code"></pre>
+          <div class="row">
+            <button id="btnCopyPix" class="btn btn-primary">COPIAR PIX</button>
+            <button id="btnWhats" class="btn btn-ghost">ENVIAR COMPROVANTE</button>
+          </div>
+          <div class="muted small tip">Após pagar, envie o comprovante no WhatsApp para liberar seu acesso.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OWNER MODAL -->
+    <div id="ownerModal" class="modal hidden">
+      <div class="modal-card">
+        <div class="modal-head">
+          <div class="modal-title">Login do Dono</div>
+          <button id="btnCloseOwner" class="icon-btn" aria-label="Fechar">✕</button>
+        </div>
+        <div class="row">
+          <input id="ownerUser" class="input" placeholder="Usuário" autocomplete="off" />
+        </div>
+        <div class="row">
+          <input id="ownerPass" class="input" type="password" placeholder="Senha" autocomplete="off" />
+        </div>
+        <button id="btnOwnerLogin" class="btn btn-primary btn-big">ENTRAR</button>
+        <div id="ownerLoginMsg" class="muted small"></div>
+      </div>
+    </div>
+
+    <!-- OWNER PANEL -->
+    <section id="viewOwner" class="view hidden">
+      <div class="screen-head">
+        <div class="kicker">PAINEL DO DONO</div>
+        <h1>Admin • PAULO SENSI</h1>
+        <p class="muted">Tudo local (sem servidor) • Backup/restore via JSON.</p>
+
+        <div id="ownerSummary" class="summary"></div>
+
+        <div class="tabs">
+          <button class="tab active" data-tab="clients">Clientes</button>
+          <button class="tab" data-tab="sensi">Sensi</button>
+          <button class="tab" data-tab="models">Modelos</button>
+          <button class="tab" data-tab="vip">VIP</button>
+          <button class="tab" data-tab="settings">Ajustes</button>
+          <button class="tab" data-tab="backup">Backup</button>
+          <button class="tab" data-tab="security">Segurança</button>
+          <button class="tab" data-tab="logs">Logs</button>
+        </div>
+      </div>
+
+      <!-- Clients -->
+      <div class="owner-panel" data-panel="clients">
+        <div class="card">
+          <div class="card-title">Liberar VIP (por e-mail ou código)</div>
+          <div class="row">
+            <input id="clientKey" class="input" placeholder="E-mail ou código (ex: PS-AB12-CD34)" />
+            <select id="clientPlan" class="input">
+              <option value="standard">Padrão (VIP 2)</option>
+              <option value="premium">Premium (VIP 3)</option>
+            </select>
+          </div>
+          <div class="row">
+            <button id="btnGrantVip" class="btn btn-primary">LIBERAR</button>
+            <button id="btnRevokeVip" class="btn btn-ghost">REMOVER</button>
+            <button id="btnResetVipAll" class="btn btn-ghost">RESET VIP</button>
+          </div>
+          <div id="clientMsg" class="muted small"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Lista de clientes liberados</div>
+          <div id="clientsTable" class="table"></div>
+        </div>
+      </div>
+
+      <!-- Sensi -->
+      <div class="owner-panel hidden" data-panel="sensi">
+        <div class="card">
+          <div class="card-title">Editar sensi por modelo (VIP 1/2/3)</div>
+          <div class="row">
+            <select id="editBrand" class="input"></select>
+            <select id="editModel" class="input"></select>
+            <select id="editTier" class="input">
+              <option value="free">VIP 1 (Grátis)</option>
+              <option value="standard">VIP 2 (Padrão)</option>
+              <option value="premium">VIP 3 (Premium)</option>
+            </select>
+          </div>
+          <div id="editSensiGrid" class="edit-grid"></div>
+          <div class="row">
+            <button id="btnSaveSensi" class="btn btn-primary">SALVAR</button>
+            <button id="btnResetSensiModel" class="btn btn-ghost">RESETAR MODELO</button>
+          </div>
+          <div id="sensiMsg" class="muted small"></div>
+        </div>
+      </div>
+
+      <!-- Models -->
+      <div class="owner-panel hidden" data-panel="models">
+        <div class="card">
+          <div class="card-title">Gerenciar modelos</div>
+          <div class="row">
+            <select id="modelBrand" class="input"></select>
+            <input id="modelName" class="input" placeholder="Nome do modelo (ex: Galaxy A16 4G)" />
+          </div>
+          <div class="row">
+            <button id="btnAddModel" class="btn btn-primary">ADICIONAR</button>
+            <button id="btnRemoveModel" class="btn btn-ghost">REMOVER</button>
+            <button id="btnRenameModel" class="btn btn-ghost">RENOMEAR</button>
+          </div>
+          <div id="modelMsg" class="muted small"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Atalhos & ferramentas de modelos</div>
+          <div id="modelToolsGrid" class="tools-grid"></div>
+        </div>
+      </div>
+
+      <!-- VIP -->
+      <div class="owner-panel hidden" data-panel="vip">
+        <div class="card">
+          <div class="card-title">Banner VIP (aparece no topo)</div>
+          <div class="row">
+            <input id="vipBanner" class="input" placeholder="Ex: Promo VIP hoje 💜" />
+            <button id="btnSaveVipBanner" class="btn btn-primary">SALVAR</button>
+          </div>
+          <div class="row">
+            <button id="btnLockVip2" class="btn btn-ghost">Bloquear VIP 2</button>
+            <button id="btnUnlockVip2" class="btn btn-ghost">Desbloquear VIP 2</button>
+          </div>
+          <div class="row">
+            <button id="btnLockVip3" class="btn btn-ghost">Bloquear VIP 3</button>
+            <button id="btnUnlockVip3" class="btn btn-ghost">Desbloquear VIP 3</button>
+          </div>
+          <div id="vipMsg" class="muted small"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Ferramentas VIP (300+)</div>
+          <div class="muted small">Várias funcionam, outras ficam como “em breve” para deixar o painel gigante e profissional.</div>
+          <div id="toolsGrid" class="tools-grid"></div>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div class="owner-panel hidden" data-panel="settings">
+        <div class="card">
+          <div class="card-title">Aviso/Notícia do app</div>
+          <div class="row">
+            <input id="appNotice" class="input" placeholder="Ex: Nova sensi adicionada hoje 🔥" />
+            <button id="btnSaveNotice" class="btn btn-primary">SALVAR</button>
+          </div>
+          <div class="row">
+            <button id="btnToggleNeon" class="btn btn-ghost">🌓 Neon ON/OFF</button>
+            <button id="btnClearStats" class="btn btn-ghost">Zerar estatísticas</button>
+          </div>
+          <div id="settingsMsg" class="muted small"></div>
+        </div>
+      </div>
+
+      <!-- Backup -->
+      <div class="owner-panel hidden" data-panel="backup">
+        <div class="card">
+          <div class="card-title">Exportar / Importar (JSON)</div>
+          <div class="row">
+            <button id="btnExport" class="btn btn-primary">EXPORTAR</button>
+            <button id="btnImport" class="btn btn-ghost">IMPORTAR</button>
+            <input id="importFile" type="file" accept="application/json" style="display:none" />
+          </div>
+          <div class="row">
+            <button id="btnBackupLocal" class="btn btn-ghost">Backup local</button>
+            <button id="btnRestoreLocal" class="btn btn-ghost">Restaurar local</button>
+          </div>
+          <div class="row">
+            <button id="btnFactoryReset" class="btn btn-ghost danger">RESETAR TUDO</button>
+          </div>
+          <div id="backupMsg" class="muted small"></div>
+        </div>
+      </div>
+
+      <!-- Security -->
+      <div class="owner-panel hidden" data-panel="security">
+        <div class="card">
+          <div class="card-title">Segurança</div>
+          <div class="muted">Proteções simples (sem servidor). Trocar chave local invalida assinaturas antigas.</div>
+          <div class="row">
+            <button id="btnRotateKey" class="btn btn-primary">Trocar chave local</button>
+            <button id="btnLogoutOwner" class="btn btn-ghost">Sair do painel</button>
+          </div>
+          <div id="securityMsg" class="muted small"></div>
+        </div>
+      </div>
+
+      <!-- Logs -->
+      <div class="owner-panel hidden" data-panel="logs">
+        <div class="card">
+          <div class="card-title">Logs locais</div>
+          <div class="row">
+            <button id="btnCopyLogs" class="btn btn-primary">Copiar logs</button>
+            <button id="btnClearLogs" class="btn btn-ghost">Limpar logs</button>
+          </div>
+          <pre id="logsBox" class="logs"></pre>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
